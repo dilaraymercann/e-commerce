@@ -1,3 +1,4 @@
+import PromoSlider from "../components/PromoSlider";
 import Slider from "../components/Slider";
 import Categories from "./Categories";
 import Products from "./Products";
@@ -8,6 +9,7 @@ const PageContent = () => {
             <Slider />
             <Categories />
             <Products />
+            <PromoSlider />
         </>
     );
 };
