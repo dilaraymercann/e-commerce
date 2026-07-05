@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import { TopBar } from './components/header/TopBar'
+import Header from './layout/Header'
+import PageContent from './layout/PageContent'
 
 function App() {
 
   return (
     <>
-      <TopBar />
+      <Header />
+      <PageContent />
     </>
   )
 }
