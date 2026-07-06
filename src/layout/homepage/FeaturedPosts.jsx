@@ -1,4 +1,4 @@
-import FeaturedPostCard from "../components/FeaturedPostCard";
+import FeaturedPostCard from "../../components/homepage/FeaturedPostCard";
 
 const posts = [
     {

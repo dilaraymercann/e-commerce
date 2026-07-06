@@ -1,5 +1,5 @@
-import TopBar from "../components/TopBar";
-import NavBar from "../components/NavBar";
+import TopBar from "../../components/main/TopBar";
+import NavBar from "../../components/main/NavBar";
 
 const Header = () => {
     return (

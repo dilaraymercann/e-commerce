@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './layout/Header'
-import PageContent from './layout/PageContent'
+import Header from './layout/main/Header'
+import PageContent from './layout/homepage/PageContent'
 
 function App() {
 

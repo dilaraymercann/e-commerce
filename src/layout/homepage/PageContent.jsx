@@ -1,10 +1,10 @@
-import PromoSlider from "../components/PromoSlider";
-import Slider from "../components/Slider";
+import PromoSlider from "../../components/homepage/PromoSlider";
+import Slider from "../../components/homepage/Slider";
 import Categories from "./Categories";
 import Products from "./Products";
-import FeaturedSection from "../components/FeaturedSection";
+import FeaturedSection from "../../components/homepage/FeaturedSection";
 import FeaturedPosts from "./FeaturedPosts";
-import Footer from "./Footer";
+import Footer from "../main/Footer";
 
 const PageContent = () => {
     return (
