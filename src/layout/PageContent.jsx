@@ -3,6 +3,7 @@ import Slider from "../components/Slider";
 import Categories from "./Categories";
 import Products from "./Products";
 import FeaturedSection from "../components/FeaturedSection";
+import FeaturedPosts from "./FeaturedPosts";
 
 const PageContent = () => {
     return (
@@ -12,6 +13,7 @@ const PageContent = () => {
             <Products />
             <PromoSlider />
             <FeaturedSection />
+            <FeaturedPosts />
         </>
     );
 };
