@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
             <img
                 src={product.image}
                 alt={product.title}
-                className="h-[360px] w-full object-cover transition-transform duration-500 hover:scale-110"
+                className="h-90 w-full object-cover transition-transform duration-500 hover:scale-110"
             />
 
             <CardBody className="flex flex-col items-center gap-2 px-0 py-6">

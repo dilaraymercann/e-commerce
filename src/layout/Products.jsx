@@ -110,7 +110,7 @@ const products = [
 const Products = () => {
     return (
         <section className="py-20">
-            <div className="mx-auto max-w-[1124px]">
+            <div className="mx-auto max-w-[80vw]">
                 <div className="mb-12 text-center">
                     <p className="font-montserrat text-xl text-[#737373]">
                         Featured Products

@@ -16,15 +16,15 @@ const PromoSlider = () => {
                 loop={true}
             >
                 <SwiperSlide>
-                    <div className="mx-auto flex h-[600px] max-w-[1050px] items-center justify-between px-8">
-                        <div className="max-w-[420px] font-montserrat text-white">
-                            <p className="mb-6 text-sm font-bold">SUMMER 2026</p>
+                    <div className="mx-auto flex items-center justify-center gap-52 h-[90vh]">
+                        <div className="flex flex-col gap-8 font-montserrat w-[50vh] text-white">
+                            <h6 className="">SUMMER 2026</h6>
 
-                            <h2 className="mb-6 text-6xl font-bold leading-tight">
+                            <h1 className="font-bold! leading-tight">
                                 Vita Classic Product
-                            </h2>
+                            </h1>
 
-                            <p className="mb-8 text-sm leading-6">
+                            <p className="text-sm leading-6">
                                 We know how large objects will act. We know how are objects
                                 will act. We know
                             </p>
@@ -38,26 +38,25 @@ const PromoSlider = () => {
                             </div>
                         </div>
 
-                        <div className="flex h-[600px] items-end">
+                        <div className="flex h-full items-end">
                             <img
                                 src="/promo-man.png"
                                 alt="Vita Classic Product"
-                                className="h-[520px] object-contain"
+                                className="w-[50vh] object-contain"
                             />
                         </div>
                     </div>
                 </SwiperSlide>
-
                 <SwiperSlide>
-                    <div className="mx-auto flex h-[600px] max-w-[1050px] items-center justify-between px-8">
-                        <div className="max-w-[420px] font-montserrat text-white">
-                            <p className="mb-6 text-sm font-bold">SUMMER 2020</p>
+                    <div className="mx-auto flex items-center justify-center gap-52 h-[90vh]">
+                        <div className="flex flex-col gap-8 font-montserrat w-[50vh] text-white">
+                            <h6 className="">SUMMER 2026</h6>
 
-                            <h2 className="mb-6 text-6xl font-bold leading-tight">
+                            <h1 className="font-bold! leading-tight">
                                 Vita Classic Product
-                            </h2>
+                            </h1>
 
-                            <p className="mb-8 text-sm leading-6">
+                            <p className="text-sm leading-6">
                                 We know how large objects will act. We know how are objects
                                 will act. We know
                             </p>
@@ -71,11 +70,11 @@ const PromoSlider = () => {
                             </div>
                         </div>
 
-                        <div className="flex h-[600px] items-end">
+                        <div className="flex h-full items-end">
                             <img
                                 src="/promo-man.png"
                                 alt="Vita Classic Product"
-                                className="h-[520px] object-contain"
+                                className="w-[50vh] object-contain"
                             />
                         </div>
                     </div>
