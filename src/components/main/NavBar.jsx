@@ -1,4 +1,5 @@
 import { Heart, Search, ShoppingCart, UserRound } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import {
     Navbar,
@@ -18,27 +19,36 @@ const NavBar = () => {
             <div className="flex w-full items-center px-4 py-4">
                 <div className="flex items-center gap-28">
                     <NavbarBrand
-                        href="/"
-                        className="!text-[#252B42] font-montserrat text-2xl font-bold "
+                        tag={Link}
+                        to="/"
+                        className="text-[#252B42]! font-montserrat text-2xl font-bold"
                     >
                         Bandage
                     </NavbarBrand>
 
                     <Nav className="flex items-center gap-6 font-montserrat text-sm font-bold">
                         <NavItem>
-                            <NavLink href="/" className="!p-0 !text-[#737373]">
+                            <NavLink tag={Link} to="/" className="p-0! text-[#737373]!">
                                 Home
                             </NavLink>
                         </NavItem>
 
                         <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret className="!p-0 !text-[#737373]">
+                            <DropdownToggle
+                                nav
+                                caret
+                                tag={Link}
+                                to="/shop"
+                                className="p-0! text-[#737373]!"
+                            >
                                 Shop
                             </DropdownToggle>
 
                             <DropdownMenu>
                                 <DropdownItem>Men</DropdownItem>
                                 <DropdownItem>Women</DropdownItem>
+                                <DropdownItem>Child</DropdownItem>
+                                <DropdownItem>Shoes</DropdownItem>
                                 <DropdownItem>Accessories</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>

@@ -1,15 +1,18 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import Header from './layout/main/Header'
-import PageContent from './layout/homepage/PageContent'
+import HomePage from './pages/HomePage'
+import ShopPage from './pages/ShopPage'
 
 function App() {
 
   return (
-    <>
-      <Header />
-      <PageContent />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
