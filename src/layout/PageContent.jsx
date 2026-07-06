@@ -4,6 +4,7 @@ import Categories from "./Categories";
 import Products from "./Products";
 import FeaturedSection from "../components/FeaturedSection";
 import FeaturedPosts from "./FeaturedPosts";
+import Footer from "./Footer";
 
 const PageContent = () => {
     return (
@@ -14,6 +15,7 @@ const PageContent = () => {
             <PromoSlider />
             <FeaturedSection />
             <FeaturedPosts />
+            <Footer />
         </>
     );
 };
