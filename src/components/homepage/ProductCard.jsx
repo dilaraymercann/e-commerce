@@ -35,9 +35,9 @@ const ProductCard = ({ product }) => {
                 </CardText>
 
                 <div className="mt-1 flex gap-2">
-                    {product.colors.map((color) => (
+                    {product.colors.map((color, index) => (
                         <span
-                            key={color}
+                            key={index}
                             className="h-4 w-4 rounded-full"
                             style={{ backgroundColor: color }}
                         />
