@@ -1,0 +1,542 @@
+[
+    {
+        "id": 1,
+        "title": "Kahverengi Kapüşonlu Mont",
+        "department": "Men Collection",
+        "oldPrice": "129.99",
+        "newPrice": "89.99",
+        "image": "/category1.jpg",
+        "rating": 4.7,
+        "reviewCount": 18,
+        "stock": "In Stock",
+        "description": "Günlük kullanım için rahat, modern ve sıcak tutan kapüşonlu mont.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category1.jpg",
+            "/category2.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Kahverengi Kapüşonlu Mont",
+                "text": "Soğuk havalar için tasarlanan bu mont, modern görünümü ve kaliteli kumaşıyla günlük kullanımda konfor sunar. Su itici dış yüzeyi ve yumuşak iç astarı sayesinde uzun süre rahatlık sağlar."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Kapüşonlu tasarım",
+                    "Su itici dış yüzey",
+                    "Yumuşak iç astar",
+                    "Günlük kullanıma uygun"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Beklediğimden daha kaliteli.",
+                    "Kış için oldukça sıcak tutuyor.",
+                    "Kesimi tam beden."
+                ]
+            }
+        }
+    },
+    {
+        "id": 2,
+        "title": "Gri Oversize Kazak",
+        "department": "Women Collection",
+        "oldPrice": "79.99",
+        "newPrice": "49.99",
+        "image": "/category2.jpg",
+        "rating": 4.6,
+        "reviewCount": 24,
+        "stock": "In Stock",
+        "description": "Yumuşak dokulu, rahat kesimli gri oversize kazak.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category2.jpg",
+            "/category3.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Gri Oversize Kazak",
+                "text": "Salaş kesimi ve yumuşak dokusuyla gün boyu konfor sağlayan oversize kazak, jean veya eteklerle kolayca kombinlenebilir."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Oversize kalıp",
+                    "Triko kumaş",
+                    "Esnek yapı",
+                    "Sonbahar ve kış için uygun"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Kumaşı çok yumuşak.",
+                    "Rengi fotoğraftakiyle aynı.",
+                    "Oldukça rahat bir ürün."
+                ]
+            }
+        }
+    },
+    {
+        "id": 3,
+        "title": "Bej Uzun Hırka",
+        "department": "Women Collection",
+        "oldPrice": "99.99",
+        "newPrice": "69.99",
+        "image": "/category3.jpg",
+        "rating": 4.8,
+        "reviewCount": 31,
+        "stock": "In Stock",
+        "description": "Şık kombinler için ideal, hafif ve zarif uzun hırka.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category3.jpg",
+            "/category4.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Bej Uzun Hırka",
+                "text": "Minimal tasarımı sayesinde hem günlük hem ofis kombinlerinde kullanılabilecek zarif ve hafif bir hırkadır."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Uzun kesim",
+                    "İnce triko kumaş",
+                    "Düğmesiz tasarım",
+                    "Kolay kombinlenebilir"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Çok şık duruyor.",
+                    "İlkbahar için ideal.",
+                    "Kumaşı kaliteli."
+                ]
+            }
+        }
+    },
+    {
+        "id": 4,
+        "title": "Sarı Desenli Gömlek",
+        "department": "Men Collection",
+        "oldPrice": "64.99",
+        "newPrice": "39.99",
+        "image": "/category4.jpg",
+        "rating": 4.4,
+        "reviewCount": 12,
+        "stock": "In Stock",
+        "description": "Canlı rengi ve desenli yapısıyla yaz kombinlerine uygun gömlek.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category4.jpg",
+            "/category1.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Sarı Desenli Gömlek",
+                "text": "Yaz aylarında ferah kullanım sağlayan pamuklu gömlek, desenleriyle dikkat çeken modern bir tasarıma sahiptir."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Pamuklu kumaş",
+                    "Nefes alabilir yapı",
+                    "Slim fit kesim",
+                    "Yaz aylarına uygun"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Deseni çok güzel.",
+                    "Kumaşı ince ve rahat.",
+                    "Fiyatına göre başarılı."
+                ]
+            }
+        }
+    },
+    {
+        "id": 5,
+        "title": "Klasik Bej Trençkot",
+        "department": "Women Collection",
+        "oldPrice": "149.99",
+        "newPrice": "109.99",
+        "image": "/category1.jpg",
+        "rating": 4.9,
+        "reviewCount": 42,
+        "stock": "In Stock",
+        "description": "Mevsim geçişleri için zamansız ve şık bej trençkot.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category1.jpg",
+            "/category3.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Klasik Bej Trençkot",
+                "text": "Her sezon kullanılabilecek klasik tasarımıyla gardırobun vazgeçilmez parçalarından biridir."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Kemer detaylı",
+                    "Suya dayanıklı kumaş",
+                    "Klasik kesim",
+                    "İç astarlı"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Tam istediğim gibi.",
+                    "Oldukça kaliteli.",
+                    "Kesimi çok güzel."
+                ]
+            }
+        }
+    },
+    {
+        "id": 6,
+        "title": "Balıkçı Yaka Triko",
+        "department": "Women Collection",
+        "oldPrice": "74.99",
+        "newPrice": "44.99",
+        "image": "/category2.jpg",
+        "rating": 4.5,
+        "reviewCount": 20,
+        "stock": "In Stock",
+        "description": "Soğuk havalarda konfor sağlayan sade balıkçı yaka triko.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category2.jpg",
+            "/category4.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Balıkçı Yaka Triko",
+                "text": "Şık görünümü ve sıcak tutan yapısıyla günlük kombinlerde rahatlıkla tercih edilebilir."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Balıkçı yaka",
+                    "Esnek triko kumaş",
+                    "Slim fit",
+                    "Kış sezonu için ideal"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Çok rahat.",
+                    "Kumaşı kaliteli.",
+                    "Rengi çok hoş."
+                ]
+            }
+        }
+    },
+    {
+        "id": 7,
+        "title": "Çiçek Desenli Etek",
+        "department": "Women Collection",
+        "oldPrice": "89.99",
+        "newPrice": "59.99",
+        "image": "/category3.jpg",
+        "rating": 4.3,
+        "reviewCount": 15,
+        "stock": "In Stock",
+        "description": "Hafif kumaşı ve çiçek desenleriyle günlük şıklık sunan etek.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category3.jpg",
+            "/category2.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Çiçek Desenli Etek",
+                "text": "Canlı desenleri ve hafif kumaşı sayesinde yaz aylarında konforlu bir kullanım sunan, günlük kombinlere hareket katan şık bir etektir."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Yüksek bel tasarım",
+                    "Çiçek desenli kumaş",
+                    "Hafif ve nefes alabilir yapı",
+                    "Yaz aylarına uygun"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Desenleri çok güzel.",
+                    "Kumaşı ince ve rahat.",
+                    "Tam yazlık bir ürün."
+                ]
+            }
+        }
+    },
+    {
+        "id": 8,
+        "title": "Yazlık Kısa Kollu Gömlek",
+        "department": "Men Collection",
+        "oldPrice": "69.99",
+        "newPrice": "42.99",
+        "image": "/category4.jpg",
+        "rating": 4.6,
+        "reviewCount": 27,
+        "stock": "In Stock",
+        "description": "Rahat kalıbı ve hafif kumaşıyla yaz ayları için ideal gömlek.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category4.jpg",
+            "/category1.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Yazlık Kısa Kollu Gömlek",
+                "text": "Pamuklu yapısı sayesinde sıcak havalarda ferahlık sağlayan modern kesimli kısa kollu gömlek."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Pamuklu kumaş",
+                    "Kısa kollu",
+                    "Regular fit",
+                    "Nefes alabilir yapı"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Yaz için mükemmel.",
+                    "Kesimi çok rahat.",
+                    "Fiyat performans ürünü."
+                ]
+            }
+        }
+    },
+    {
+        "id": 9,
+        "title": "Oversize Camel Ceket",
+        "department": "Men Collection",
+        "oldPrice": "119.99",
+        "newPrice": "84.99",
+        "image": "/category1.jpg",
+        "rating": 4.7,
+        "reviewCount": 33,
+        "stock": "In Stock",
+        "description": "Modern görünüm sunan, rahat kesimli camel renkli ceket.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category1.jpg",
+            "/category4.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Oversize Camel Ceket",
+                "text": "Oversize kesimiyle hem rahatlık hem de modern görünüm sunan camel renkli ceket günlük kombinler için idealdir."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Oversize kesim",
+                    "Düğmeli kapanış",
+                    "İç cepli tasarım",
+                    "Yumuşak dokulu kumaş"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Çok kaliteli duruyor.",
+                    "Kalıbı tam istediğim gibi.",
+                    "Rengi çok şık."
+                ]
+            }
+        }
+    },
+    {
+        "id": 10,
+        "title": "Gri Yün Kazak",
+        "department": "Women Collection",
+        "oldPrice": "84.99",
+        "newPrice": "54.99",
+        "image": "/category2.jpg",
+        "rating": 4.4,
+        "reviewCount": 19,
+        "stock": "In Stock",
+        "description": "Minimal tasarımlı, sıcak tutan ve kolay kombinlenen gri yün kazak.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category2.jpg",
+            "/category3.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Gri Yün Kazak",
+                "text": "Yün karışımlı kumaşı sayesinde soğuk günlerde sıcak tutan sade ve zamansız bir kazaktır."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Yün karışımlı kumaş",
+                    "Bisiklet yaka",
+                    "Slim fit",
+                    "Esnek yapı"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Kumaşı çok kaliteli.",
+                    "Sıcak tutuyor.",
+                    "Her şeyle kombinleniyor."
+                ]
+            }
+        }
+    },
+    {
+        "id": 11,
+        "title": "Bej Palazzo Pantolon",
+        "department": "Women Collection",
+        "oldPrice": "94.99",
+        "newPrice": "64.99",
+        "image": "/category3.jpg",
+        "rating": 4.8,
+        "reviewCount": 29,
+        "stock": "In Stock",
+        "description": "Yüksek bel ve rahat kesimiyle şık bir palazzo pantolon.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category3.jpg",
+            "/category2.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Bej Palazzo Pantolon",
+                "text": "Akıcı kumaşı ve yüksek bel kesimiyle hem ofis hem günlük kullanıma uygun şık bir palazzo pantolon."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Yüksek bel",
+                    "Bol paça",
+                    "Akıcı kumaş",
+                    "Günlük ve klasik kombinlere uygun"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Çok rahat.",
+                    "Kumaşı dökümlü ve kaliteli.",
+                    "Tam beden alabilirsiniz."
+                ]
+            }
+        }
+    },
+    {
+        "id": 12,
+        "title": "Hardal Sarısı Gömlek",
+        "department": "Men Collection",
+        "oldPrice": "74.99",
+        "newPrice": "46.99",
+        "image": "/category4.jpg",
+        "rating": 4.5,
+        "reviewCount": 21,
+        "stock": "In Stock",
+        "description": "Desenli ve enerjik tasarımıyla günlük kombinlere hareket katan gömlek.",
+        "colors": [
+            "#23A6F0",
+            "#23856D",
+            "#E77C40",
+            "#252B42"
+        ],
+        "gallery": [
+            "/category4.jpg",
+            "/category1.jpg"
+        ],
+        "details": {
+            "description": {
+                "title": "Hardal Sarısı Gömlek",
+                "text": "Canlı hardal tonu ve modern kesimiyle günlük stilinizi tamamlayan rahat ve şık bir gömlek."
+            },
+            "additionalInfo": {
+                "title": "Ürün Özellikleri",
+                "items": [
+                    "Pamuk karışımlı kumaş",
+                    "Modern kesim",
+                    "Uzun kollu",
+                    "Kolay ütülenebilir"
+                ]
+            },
+            "reviews": {
+                "title": "Müşteri Yorumları",
+                "items": [
+                    "Rengi gerçekten çok güzel.",
+                    "Kalitesi fiyatına göre yüksek.",
+                    "Kumaşı beklediğimden iyi."
+                ]
+            }
+        }
+    }
+]

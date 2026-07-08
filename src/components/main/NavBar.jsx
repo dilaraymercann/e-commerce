@@ -66,7 +66,7 @@ const NavBar = () => {
                         </NavItem>
 
                         <NavItem>
-                            <NavLink href="/contact" className="!p-0 !text-[#737373]">
+                            <NavLink tag={Link} to="/contact" className="!p-0 !text-[#737373]">
                                 Contact
                             </NavLink>
                         </NavItem>

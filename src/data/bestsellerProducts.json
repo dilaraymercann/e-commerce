@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "title": "Rose Gold Cutlery Set",
+        "department": "Home Collection",
+        "oldPrice": "32.99",
+        "newPrice": "19.99",
+        "image": "/bestseller1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Minimal Glass Set",
+        "department": "Kitchen Collection",
+        "oldPrice": "44.99",
+        "newPrice": "29.99",
+        "image": "/bestseller2.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Ceramic Dinner Plate",
+        "department": "Tableware",
+        "oldPrice": "28.99",
+        "newPrice": "16.99",
+        "image": "/bestseller3.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Stacked Coffee Cups",
+        "department": "Kitchen Collection",
+        "oldPrice": "36.99",
+        "newPrice": "24.99",
+        "image": "/bestseller4.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Aqua Ceramic Bowl",
+        "department": "Tableware",
+        "oldPrice": "22.99",
+        "newPrice": "14.99",
+        "image": "/bestseller5.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Modern Wooden Chair",
+        "department": "Furniture",
+        "oldPrice": "159.99",
+        "newPrice": "119.99",
+        "image": "/bestseller6.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Elegant Serving Set",
+        "department": "Home Collection",
+        "oldPrice": "39.99",
+        "newPrice": "25.99",
+        "image": "/bestseller1.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Classic Dinner Set",
+        "department": "Tableware",
+        "oldPrice": "49.99",
+        "newPrice": "34.99",
+        "image": "/bestseller2.jpg"
+    }
+]

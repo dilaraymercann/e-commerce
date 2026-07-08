@@ -1,111 +1,5 @@
 import ProductCard from "../../components/homepage/ProductCard";
-
-const products = [
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category1.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category4.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category3.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category2.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category1.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category4.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category1.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-    {
-        title: "Graphic Design",
-        department: "English Department",
-        oldPrice: "16.48",
-        newPrice: "6.48",
-        image: "/category2.jpg",
-        colors: [
-            "#23A6F0",
-            "#23856D",
-            "#E77C40",
-            "#252B42",
-        ],
-    },
-];
+import products from "../../data/products";
 
 const Products = () => {
     return (
@@ -126,9 +20,9 @@ const Products = () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                    {products.map((product, index) => (
+                    {products.slice(0, 8).map((product) => (
                         <ProductCard
-                            key={index}
+                            key={product.id}
                             product={product}
                         />
                     ))}

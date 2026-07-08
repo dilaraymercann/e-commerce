@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "CLOTHS",
+        "items": "5 Items",
+        "image": "/shop-card1.jpg"
+    },
+    {
+        "id": 2,
+        "title": "CLOTHS",
+        "items": "5 Items",
+        "image": "/shop-card2.jpg"
+    },
+    {
+        "id": 3,
+        "title": "CLOTHS",
+        "items": "5 Items",
+        "image": "/shop-card3.jpg"
+    },
+    {
+        "id": 4,
+        "title": "CLOTHS",
+        "items": "5 Items",
+        "image": "/shop-card4.jpg"
+    },
+    {
+        "id": 5,
+        "title": "CLOTHS",
+        "items": "5 Items",
+        "image": "/shop-card5.jpg"
+    }
+]

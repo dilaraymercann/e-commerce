@@ -1,34 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import ShopCategoryCard from "../../components/shop/ShopCategoryCard";
 import Breadcrumb from "../../components/main/BreadCrumb";
-
-const shopCategories = [
-    {
-        title: "CLOTHS",
-        items: "5 Items",
-        image: "/shop-card1.jpg",
-    },
-    {
-        title: "CLOTHS",
-        items: "5 Items",
-        image: "/shop-card2.jpg",
-    },
-    {
-        title: "CLOTHS",
-        items: "5 Items",
-        image: "/shop-card3.jpg",
-    },
-    {
-        title: "CLOTHS",
-        items: "5 Items",
-        image: "/shop-card4.jpg",
-    },
-    {
-        title: "CLOTHS",
-        items: "5 Items",
-        image: "/shop-card5.jpg",
-    },
-];
+import shopCategories from "../../data/categories.json";
 
 const ShopHeader = () => {
     return (
