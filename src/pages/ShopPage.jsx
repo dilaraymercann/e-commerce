@@ -2,7 +2,7 @@ import Header from "../layout/main/Header";
 import Footer from "../layout/main/Footer";
 import ShopHeader from "../layout/shop/ShopHeader";
 import ShopProducts from "../layout/shop/ShopProducts";
-import BrandLogos from "../layout/shop/BrandLogos";
+import BrandLogos from "../components/main/BrandLogos";
 
 const ShopPage = () => {
     return (

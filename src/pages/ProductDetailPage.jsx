@@ -1,6 +1,6 @@
 import Footer from "../layout/main/Footer";
 import Header from "../layout/main/Header";
-import BrandLogos from "../layout/shop/BrandLogos";
+import BrandLogos from "../components/main/BrandLogos";
 import ProductDetail from "../layout/productdetail/ProductDetail";
 import BestsellerProducts from "../layout/productdetail/BestsellerProducts";
 
