@@ -80,10 +80,13 @@ const NavBar = () => {
                 </div>
 
                 <div className="ml-auto flex items-center gap-6 font-montserrat text-sm font-bold text-[#23A6F0]">
-                    <button className="flex items-center gap-1 border-0 bg-transparent p-0 text-[#23A6F0]">
+                    <Link
+                        to="/signup"
+                        className="flex items-center gap-1 no-underline text-[#23A6F0]"
+                    >
                         <UserRound className="size-4" />
                         <span>Login / Register</span>
-                    </button>
+                    </Link>
 
                     <button className="border-0 bg-transparent p-0 text-[#23A6F0]">
                         <Search className="size-5" />
