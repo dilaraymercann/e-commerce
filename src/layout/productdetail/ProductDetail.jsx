@@ -11,7 +11,7 @@ import {
     FaRegStar,
 } from "react-icons/fa";
 import products from "../../data/products.json";
-import Breadcrumb from "../../components/main/BreadCrumb";
+import Breadcrumb from "../../components/main/Breadcrumb";
 import ProductTabs from "../../components/productdetail/ProductTabs";
 
 const ProductDetail = () => {

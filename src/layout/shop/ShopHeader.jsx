@@ -1,6 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import ShopCategoryCard from "../../components/shop/ShopCategoryCard";
-import Breadcrumb from "../../components/main/BreadCrumb";
+import Breadcrumb from "../../components/main/Breadcrumb";
 import shopCategories from "../../data/categories.json";
 
 const ShopHeader = () => {
