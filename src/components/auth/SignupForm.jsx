@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../api/api";
+import { Link } from "react-router-dom";
 
 const SignupForm = () => {
     const [roles, setRoles] = useState([]);
@@ -289,6 +290,15 @@ const SignupForm = () => {
                 >
                     {isSubmitting ? "Submitting..." : "Sign Up"}
                 </button>
+                <p className="mt-5 text-center text-sm text-[#737373]">
+                    Already have an account?{" "}
+                    <Link
+                        to="/login"
+                        className="font-bold !text-[#23A6F0] !no-underline"
+                    >
+                        Sign In
+                    </Link>
+                </p>
             </form>
         </section>
     );

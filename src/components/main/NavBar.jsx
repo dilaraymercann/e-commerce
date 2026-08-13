@@ -1,5 +1,6 @@
 import { Heart, Search, ShoppingCart, UserRound } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import {
     Navbar,
@@ -14,6 +15,11 @@ import {
 } from "reactstrap";
 
 const NavBar = () => {
+    const user = useSelector((state) => state.client.user);
+    const location = useLocation();
+
+    const isLoggedIn = Boolean(user?.email);
+
     return (
         <Navbar className="bg-white px-4 py-0">
             <div className="flex w-full items-center px-4 py-4">
@@ -21,14 +27,18 @@ const NavBar = () => {
                     <NavbarBrand
                         tag={Link}
                         to="/"
-                        className="text-[#252B42]! font-montserrat text-2xl font-bold"
+                        className="!text-[#252B42] font-montserrat text-2xl font-bold"
                     >
                         Bandage
                     </NavbarBrand>
 
                     <Nav className="flex items-center gap-6 font-montserrat text-sm font-bold">
                         <NavItem>
-                            <NavLink tag={Link} to="/" className="p-0! text-[#737373]!">
+                            <NavLink
+                                tag={Link}
+                                to="/"
+                                className="!p-0 !text-[#737373]"
+                            >
                                 Home
                             </NavLink>
                         </NavItem>
@@ -39,7 +49,7 @@ const NavBar = () => {
                                 caret
                                 tag={Link}
                                 to="/shop"
-                                className="p-0! text-[#737373]!"
+                                className="!p-0 !text-[#737373]"
                             >
                                 Shop
                             </DropdownToggle>
@@ -54,25 +64,41 @@ const NavBar = () => {
                         </UncontrolledDropdown>
 
                         <NavItem>
-                            <NavLink href="/about" className="!p-0 !text-[#737373]">
+                            <NavLink
+                                tag={Link}
+                                to="/about"
+                                className="!p-0 !text-[#737373]"
+                            >
                                 About
                             </NavLink>
                         </NavItem>
 
                         <NavItem>
-                            <NavLink href="/blog" className="!p-0 !text-[#737373]">
+                            <NavLink
+                                tag={Link}
+                                to="/blog"
+                                className="!p-0 !text-[#737373]"
+                            >
                                 Blog
                             </NavLink>
                         </NavItem>
 
                         <NavItem>
-                            <NavLink tag={Link} to="/contact" className="!p-0 !text-[#737373]">
+                            <NavLink
+                                tag={Link}
+                                to="/contact"
+                                className="!p-0 !text-[#737373]"
+                            >
                                 Contact
                             </NavLink>
                         </NavItem>
 
                         <NavItem>
-                            <NavLink href="/pages" className="!p-0 !text-[#737373]">
+                            <NavLink
+                                tag={Link}
+                                to="/pages"
+                                className="!p-0 !text-[#737373]"
+                            >
                                 Pages
                             </NavLink>
                         </NavItem>
@@ -80,13 +106,24 @@ const NavBar = () => {
                 </div>
 
                 <div className="ml-auto flex items-center gap-6 font-montserrat text-sm font-bold text-[#23A6F0]">
-                    <Link
-                        to="/signup"
-                        className="flex items-center gap-1 no-underline text-[#23A6F0]"
-                    >
-                        <UserRound className="size-4" />
-                        <span>Login / Register</span>
-                    </Link>
+                    {isLoggedIn ? (
+                        <div className="flex items-center gap-2 text-[#23A6F0]">
+                            <UserRound className="size-4" />
+
+                            <span>
+                                {user.name || user.email}
+                            </span>
+                        </div>
+                    ) : (
+                        <Link
+                            to="/login"
+                            state={{ from: location.pathname }}
+                            className="flex items-center gap-1 !text-[#23A6F0] !no-underline"
+                        >
+                            <UserRound className="size-4" />
+                            <span>Login / Register</span>
+                        </Link>
+                    )}
 
                     <button className="border-0 bg-transparent p-0 text-[#23A6F0]">
                         <Search className="size-5" />

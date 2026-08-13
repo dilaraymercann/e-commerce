@@ -1,14 +1,12 @@
-import {
-    legacy_createStore as createStore,
-    applyMiddleware,
-} from "redux";
-
+import { legacy_createStore, applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
-import logger from "redux-logger";
+import { createLogger } from "redux-logger";
 
 import rootReducer from "./rootReducer";
 
-const store = createStore(
+const logger = createLogger();
+
+const store = legacy_createStore(
     rootReducer,
     applyMiddleware(thunk, logger)
 );
