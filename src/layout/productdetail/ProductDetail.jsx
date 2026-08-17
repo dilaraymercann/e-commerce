@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { fetchProduct } from "../../store/actions/productActions";
-import Breadcrumb from "../../components/main/BreadCrumb";
+import Breadcrumb from "../../components/main/Breadcrumb";
 
 const ProductDetail = () => {
     const dispatch = useDispatch();
