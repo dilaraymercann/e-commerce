@@ -1,7 +1,15 @@
+import { useSelector } from "react-redux";
 import ProductCard from "../../components/homepage/ProductCard";
-import products from "../../data/products";
 
 const Products = () => {
+    const products = useSelector(
+        (state) => state.product.productList
+    );
+
+    const fetchState = useSelector(
+        (state) => state.product.fetchState
+    );
+
     return (
         <section className="py-20">
             <div className="mx-auto max-w-[80vw]">
@@ -19,14 +27,20 @@ const Products = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                    {products.slice(0, 8).map((product) => (
-                        <ProductCard
-                            key={product.id}
-                            product={product}
-                        />
-                    ))}
-                </div>
+                {fetchState === "FETCHING" ? (
+                    <p className="text-center font-montserrat text-[#737373]">
+                        Loading...
+                    </p>
+                ) : (
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                        {products.slice(0, 8).map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     );

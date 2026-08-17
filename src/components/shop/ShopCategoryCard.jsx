@@ -1,22 +1,28 @@
+import { Link } from "react-router-dom";
+import { getCategoryUrl } from "../../utils/categoryUtils";
+
 const ShopCategoryCard = ({ category }) => {
     return (
-        <div className="group relative h-[30vh] overflow-hidden">
+        <Link
+            to={getCategoryUrl(category)}
+            className="group relative block h-[223px] overflow-hidden !no-underline"
+        >
             <img
-                src={category.image}
+                src={category.img}
                 alt={category.title}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 text-white">
-                <h4 className="font-montserrat text-sm font-bold">
+                <h3 className="font-montserrat text-base font-bold">
                     {category.title}
-                </h4>
+                </h3>
 
                 <p className="mt-2 font-montserrat text-sm font-bold">
-                    {category.items}
+                    Rating: {category.rating}
                 </p>
             </div>
-        </div>
+        </Link>
     );
 };
 

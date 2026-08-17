@@ -13,12 +13,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { verifyToken } from "./store/actions/clientActions";
+import { fetchCategories, fetchProducts } from "./store/actions/productActions";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(verifyToken());
+    dispatch(fetchCategories());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   return (
@@ -27,6 +30,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} exact />
           <Route path="/shop" element={<ShopPage />} />
+          <Route
+            path="/shop/:gender/:categoryName/:categoryId"
+            element={<ShopPage />}
+          />
           <Route path="/product/:id" element={<ProductDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />

@@ -11,14 +11,31 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem,
 } from "reactstrap";
+
+import {
+    getCategoryGender,
+    getCategoryUrl,
+} from "../../utils/categoryUtils";
 
 const NavBar = () => {
     const user = useSelector((state) => state.client.user);
+
+    const categories = useSelector(
+        (state) => state.product.categories
+    );
+
     const location = useLocation();
 
     const isLoggedIn = Boolean(user?.email);
+
+    const womenCategories = categories.filter(
+        (category) => getCategoryGender(category) === "kadin"
+    );
+
+    const menCategories = categories.filter(
+        (category) => getCategoryGender(category) === "erkek"
+    );
 
     return (
         <Navbar className="bg-white px-4 py-0">
@@ -47,19 +64,49 @@ const NavBar = () => {
                             <DropdownToggle
                                 nav
                                 caret
-                                tag={Link}
-                                to="/shop"
                                 className="!p-0 !text-[#737373]"
                             >
                                 Shop
                             </DropdownToggle>
 
-                            <DropdownMenu>
-                                <DropdownItem>Men</DropdownItem>
-                                <DropdownItem>Women</DropdownItem>
-                                <DropdownItem>Child</DropdownItem>
-                                <DropdownItem>Shoes</DropdownItem>
-                                <DropdownItem>Accessories</DropdownItem>
+                            <DropdownMenu className="!min-w-[330px] !border-0 !p-5 shadow-lg">
+                                <div className="grid grid-cols-2 gap-10">
+                                    <div>
+                                        <h6 className="mb-5 font-montserrat text-sm font-bold text-[#252B42]">
+                                            Kadın
+                                        </h6>
+
+                                        <div className="flex flex-col gap-4">
+                                            {womenCategories.map((category) => (
+                                                <Link
+                                                    key={category.id}
+                                                    to={getCategoryUrl(category)}
+                                                    className="font-montserrat text-sm font-bold !text-[#737373] !no-underline hover:!text-[#23A6F0]"
+                                                >
+                                                    {category.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 className="mb-5 font-montserrat text-sm font-bold text-[#252B42]">
+                                            Erkek
+                                        </h6>
+
+                                        <div className="flex flex-col gap-4">
+                                            {menCategories.map((category) => (
+                                                <Link
+                                                    key={category.id}
+                                                    to={getCategoryUrl(category)}
+                                                    className="font-montserrat text-sm font-bold !text-[#737373] !no-underline hover:!text-[#23A6F0]"
+                                                >
+                                                    {category.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
                             </DropdownMenu>
                         </UncontrolledDropdown>
 
