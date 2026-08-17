@@ -11,6 +11,11 @@ export const setProductList = (productList) => ({
     payload: productList,
 });
 
+export const setProduct = (product) => ({
+    type: productActionTypes.SET_PRODUCT,
+    payload: product,
+});
+
 export const setTotal = (total) => ({
     type: productActionTypes.SET_TOTAL,
     payload: total,
@@ -100,6 +105,24 @@ export const fetchProducts = ({
             dispatch(setFetchState("FETCHED"));
         } catch (error) {
             console.error("Products could not be fetched:", error);
+            dispatch(setFetchState("FAILED"));
+        }
+    };
+};
+
+export const fetchProduct = (productId) => {
+    return async (dispatch) => {
+        try {
+            dispatch(setFetchState("FETCHING"));
+
+            const response = await api.get(`/products/${productId}`);
+
+            dispatch(setProduct(response.data));
+
+            dispatch(setFetchState("FETCHED"));
+        } catch (error) {
+            console.error("Product could not be fetched:", error);
+
             dispatch(setFetchState("FAILED"));
         }
     };

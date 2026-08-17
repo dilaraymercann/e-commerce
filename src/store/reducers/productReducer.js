@@ -1,6 +1,7 @@
 const initialState = {
     categories: [],
     productList: [],
+    product: {},
     total: 0,
     limit: 25,
     offset: 0,
@@ -10,6 +11,7 @@ const initialState = {
 
 const SET_CATEGORIES = "SET_CATEGORIES";
 const SET_PRODUCT_LIST = "SET_PRODUCT_LIST";
+const SET_PRODUCT = "SET_PRODUCT";
 const SET_TOTAL = "SET_TOTAL";
 const SET_FETCH_STATE = "SET_FETCH_STATE";
 const SET_LIMIT = "SET_LIMIT";
@@ -19,6 +21,7 @@ const SET_FILTER = "SET_FILTER";
 export const productActionTypes = {
     SET_CATEGORIES,
     SET_PRODUCT_LIST,
+    SET_PRODUCT,
     SET_TOTAL,
     SET_FETCH_STATE,
     SET_LIMIT,
@@ -33,6 +36,12 @@ const productReducer = (state = initialState, action) => {
 
         case SET_PRODUCT_LIST:
             return { ...state, productList: action.payload };
+
+        case SET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload,
+            };
 
         case SET_TOTAL:
             return { ...state, total: action.payload };

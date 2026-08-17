@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 import ShopCategoryCard from "../../components/shop/ShopCategoryCard";
-import Breadcrumbs from "../../components/main/BreadCrumb";
+import Breadcrumbs from "../../components/main/Breadcrumb";
 
 const ShopHeader = () => {
     const categories = useSelector(

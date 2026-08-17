@@ -34,7 +34,10 @@ function App() {
             path="/shop/:gender/:categoryName/:categoryId"
             element={<ShopPage />}
           />
-          <Route path="/product/:id" element={<ProductDetailPage />} />
+          <Route
+            path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId"
+            element={<ProductDetailPage />}
+          />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/signup" element={<SignupPage />} />
