@@ -1,4 +1,5 @@
 import { shoppingCartActionTypes } from "../reducers/shoppingCartReducer";
+import api from "../../api/api";
 
 export const setCart = (cart) => ({
     type: shoppingCartActionTypes.SET_CART,
@@ -39,3 +40,26 @@ export const toggleCartItem = (productId) => ({
     type: shoppingCartActionTypes.TOGGLE_CART_ITEM,
     payload: productId,
 });
+
+export const createOrder = (orderData) => {
+    return async () => {
+        try {
+            const response = await api.post(
+                "/order",
+                orderData
+            );
+
+            return {
+                success: true,
+                data: response.data,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Sipariş oluşturulamadı.",
+            };
+        }
+    };
+};

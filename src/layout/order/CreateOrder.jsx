@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { Plus, Trash2, Pencil } from "lucide-react";
+
 import PaymentStep from "./PaymentStep";
 
 import {
@@ -8,10 +12,16 @@ import {
     deleteAddress,
 } from "../../store/actions/clientActions";
 
+import {
+    createOrder,
+    setCart,
+} from "../../store/actions/shoppingCartActions";
+
 import AddressForm from "../../components/order/AddressForm";
 
 const CreateOrder = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const addressList = useSelector(
         (state) => state.client.addressList
@@ -33,9 +43,17 @@ const CreateOrder = () => {
     const [activeStep, setActiveStep] =
         useState(1);
 
+    // PAYMENT
+    const [selectedCard, setSelectedCard] =
+        useState(null);
+
+    const [ccv, setCcv] =
+        useState("");
+
     useEffect(() => {
         dispatch(fetchAddresses());
     }, [dispatch]);
+
 
     const selectedItems = cart.filter(
         (item) => item.checked
@@ -74,19 +92,130 @@ const CreateOrder = () => {
         }
     };
 
+    const handleCreateOrder = async () => {
+        if (!selectedAddressId) {
+            toast.error(
+                "Lütfen bir teslimat adresi seçiniz."
+            );
+
+            return;
+        }
+
+        if (!selectedCard) {
+            toast.error(
+                "Lütfen ödeme yapmak için bir kart seçiniz."
+            );
+
+            return;
+        }
+
+        if (ccv.length !== 3) {
+            toast.error(
+                "Lütfen geçerli bir CCV giriniz."
+            );
+
+            return;
+        }
+
+        if (selectedItems.length === 0) {
+            toast.error(
+                "Sipariş oluşturmak için en az bir ürün seçiniz."
+            );
+
+            return;
+        }
+
+        const orderData = {
+            address_id:
+                selectedAddressId,
+
+            order_date:
+                new Date()
+                    .toISOString()
+                    .slice(0, 19),
+
+            card_no:
+                Number(
+                    selectedCard.card_no
+                ),
+
+            card_name:
+                selectedCard.name_on_card,
+
+            card_expire_month:
+                Number(
+                    selectedCard.expire_month
+                ),
+
+            card_expire_year:
+                Number(
+                    selectedCard.expire_year
+                ),
+
+            card_ccv:
+                Number(ccv),
+
+            price:
+                Number(
+                    grandTotal.toFixed(2)
+                ),
+
+            products:
+                selectedItems.map(
+                    (item) => ({
+                        product_id:
+                            item.product.id,
+
+                        count:
+                            item.count,
+
+                        detail:
+                            item.product
+                                .description || "",
+                    })
+                ),
+        };
+
+        console.log(
+            "Order Payload:",
+            orderData
+        );
+
+        const result =
+            await dispatch(
+                createOrder(orderData)
+            );
+
+        if (result.success) {
+            toast.success(
+                "Tebrikler! Siparişiniz başarıyla oluşturuldu."
+            );
+
+            dispatch(setCart([]));
+            setSelectedAddressId(null);
+            setSelectedCard(null);
+            setCcv("");
+            setActiveStep(1);
+            navigate("/");
+        } else {
+            toast.error(
+                result.message
+            );
+        }
+    };
+
     return (
         <section className="bg-[#FAFAFA] py-10 font-montserrat">
             <div className="mx-auto max-w-[1200px] px-4">
 
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
-
                     <div>
-
                         <div className="mb-6 grid grid-cols-2 overflow-hidden rounded border border-[#E8E8E8] bg-white">
-
                             <button
                                 type="button"
-                                onClick={() => setActiveStep(1)}
+                                onClick={() =>
+                                    setActiveStep(1)
+                                }
                                 className={`p-5 text-left ${activeStep === 1
                                     ? "border-b-4 border-[#E77C40]"
                                     : ""
@@ -117,8 +246,12 @@ const CreateOrder = () => {
                             </button>
                             <button
                                 type="button"
-                                disabled={!selectedAddressId}
-                                onClick={() => setActiveStep(2)}
+                                disabled={
+                                    !selectedAddressId
+                                }
+                                onClick={() =>
+                                    setActiveStep(2)
+                                }
                                 className={`p-5 text-left disabled:cursor-not-allowed disabled:opacity-50 ${activeStep === 2
                                     ? "border-b-4 border-[#E77C40]"
                                     : ""
@@ -161,14 +294,20 @@ const CreateOrder = () => {
                                     <button
                                         type="button"
                                         onClick={() => {
-                                            setEditingAddress(null);
+                                            setEditingAddress(
+                                                null
+                                            );
+
                                             setShowAddressForm(
                                                 !showAddressForm
                                             );
                                         }}
                                         className="flex items-center gap-2 text-sm font-bold text-[#E77C40]"
                                     >
-                                        <Plus size={18} />
+                                        <Plus
+                                            size={18}
+                                        />
+
                                         Yeni Adres Ekle
                                     </button>
 
@@ -196,7 +335,9 @@ const CreateOrder = () => {
                                     {addressList.map(
                                         (address) => (
                                             <div
-                                                key={address.id}
+                                                key={
+                                                    address.id
+                                                }
                                                 onClick={() =>
                                                     setSelectedAddressId(
                                                         address.id
@@ -228,7 +369,9 @@ const CreateOrder = () => {
                                                         />
 
                                                         <span className="font-bold text-[#252B42]">
-                                                            {address.title}
+                                                            {
+                                                                address.title
+                                                            }
                                                         </span>
 
                                                     </div>
@@ -249,7 +392,9 @@ const CreateOrder = () => {
                                                             className="text-[#737373] hover:text-[#23A6F0]"
                                                         >
                                                             <Pencil
-                                                                size={16}
+                                                                size={
+                                                                    16
+                                                                }
                                                             />
                                                         </button>
 
@@ -267,26 +412,43 @@ const CreateOrder = () => {
                                                             className="text-[#737373] hover:text-red-500"
                                                         >
                                                             <Trash2
-                                                                size={16}
+                                                                size={
+                                                                    16
+                                                                }
                                                             />
                                                         </button>
 
                                                     </div>
+
                                                 </div>
 
                                                 <h3 className="mb-2 font-bold text-[#252B42]">
-                                                    {address.name}{" "}
-                                                    {address.surname}
+                                                    {
+                                                        address.name
+                                                    }{" "}
+                                                    {
+                                                        address.surname
+                                                    }
                                                 </h3>
 
                                                 <p className="mb-2 text-sm text-[#737373]">
-                                                    {address.phone}
+                                                    {
+                                                        address.phone
+                                                    }
                                                 </p>
 
                                                 <p className="text-sm leading-6 text-[#737373]">
-                                                    {address.neighborhood},{" "}
-                                                    {address.district},{" "}
-                                                    {address.city}
+                                                    {
+                                                        address.neighborhood
+                                                    }
+                                                    ,{" "}
+                                                    {
+                                                        address.district
+                                                    }
+                                                    ,{" "}
+                                                    {
+                                                        address.city
+                                                    }
                                                 </p>
 
                                             </div>
@@ -297,14 +459,20 @@ const CreateOrder = () => {
 
                             </div>
                         )}
-
                         {activeStep === 2 && (
-                            <PaymentStep />
+                            <PaymentStep
+                                onCardSelect={
+                                    setSelectedCard
+                                }
+                                ccv={ccv}
+                                setCcv={
+                                    setCcv
+                                }
+                            />
                         )}
 
                     </div>
                     <div className="h-fit lg:sticky lg:top-6">
-
                         <div className="rounded border border-[#E8E8E8] bg-white p-5 shadow-sm">
 
                             <h2 className="mb-5 text-xl font-medium text-[#252B42]">
@@ -314,40 +482,48 @@ const CreateOrder = () => {
                             <div className="space-y-3 text-sm">
 
                                 <div className="flex justify-between">
+
                                     <span className="text-[#737373]">
                                         Ürünün Toplamı
                                     </span>
 
-                                    <span className="font-bold">
+                                    <span className="font-bold text-[#252B42]">
                                         $
                                         {productsTotal.toFixed(
                                             2
                                         )}
                                     </span>
+
                                 </div>
 
                                 <div className="flex justify-between">
+
                                     <span className="text-[#737373]">
                                         Kargo Toplam
                                     </span>
 
-                                    <span className="font-bold">
+                                    <span className="font-bold text-[#252B42]">
                                         $
                                         {shippingPrice.toFixed(
                                             2
                                         )}
                                     </span>
+
                                 </div>
 
                                 <div className="flex justify-between gap-4">
+
                                     <span className="text-[#737373]">
                                         150 TL ve Üzeri Kargo Bedava
                                     </span>
 
                                     <span className="font-bold text-[#E77C40]">
                                         -$
-                                        {discount.toFixed(2)}
+                                        {discount.toFixed(
+                                            2
+                                        )}
                                     </span>
+
                                 </div>
 
                             </div>
@@ -362,7 +538,9 @@ const CreateOrder = () => {
 
                                 <span className="text-xl font-bold text-[#E77C40]">
                                     $
-                                    {grandTotal.toFixed(2)}
+                                    {grandTotal.toFixed(
+                                        2
+                                    )}
                                 </span>
 
                             </div>
@@ -371,7 +549,9 @@ const CreateOrder = () => {
                         {activeStep === 1 && (
                             <button
                                 type="button"
-                                disabled={!selectedAddressId}
+                                disabled={
+                                    !selectedAddressId
+                                }
                                 onClick={() =>
                                     setActiveStep(2)
                                 }
@@ -383,7 +563,16 @@ const CreateOrder = () => {
                         {activeStep === 2 && (
                             <button
                                 type="button"
-                                className="mt-4 w-full rounded bg-[#E77C40] py-3 text-sm font-bold text-white"
+                                onClick={
+                                    handleCreateOrder
+                                }
+                                disabled={
+                                    !selectedCard ||
+                                    ccv.length !== 3 ||
+                                    selectedItems.length ===
+                                    0
+                                }
+                                className="mt-4 w-full rounded bg-[#E77C40] py-3 text-sm font-bold text-white transition hover:bg-[#d86d32] disabled:cursor-not-allowed disabled:opacity-50"
                             >
                                 Ödeme Yap
                             </button>

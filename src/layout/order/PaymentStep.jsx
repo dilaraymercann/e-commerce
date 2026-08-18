@@ -14,7 +14,11 @@ import {
 
 import CardForm from "../../components/order/CardForm";
 
-const PaymentStep = () => {
+const PaymentStep = ({
+    onCardSelect,
+    ccv,
+    setCcv,
+}) => {
     const dispatch = useDispatch();
 
     const creditCards = useSelector(
@@ -40,6 +44,12 @@ const PaymentStep = () => {
         }
 
         return `${cardNo.slice(0, 4)} **** **** ${cardNo.slice(-4)}`;
+    };
+
+    const handleSelectCard = (card) => {
+        setSelectedCardId(card.id);
+
+        onCardSelect(card);
     };
 
     const handleAddCard = () => {
@@ -69,6 +79,8 @@ const PaymentStep = () => {
 
         if (selectedCardId === cardId) {
             setSelectedCardId(null);
+
+            onCardSelect(null);
         }
     };
 
@@ -78,8 +90,6 @@ const PaymentStep = () => {
 
     return (
         <div className="overflow-hidden rounded border border-[#E8E8E8] bg-white">
-
-            {/* PAYMENT TYPE HEADER */}
             <div className="flex items-start gap-4 border-b border-[#E8E8E8] p-7">
 
                 <input
@@ -94,18 +104,15 @@ const PaymentStep = () => {
                         Kart ile Öde
                     </h2>
 
-                    <p className="mt-2 max-w-[700px] text-sm leading-6 text-[#737373]">
-                        Kart ile ödemeyi seçtiniz. Banka veya Kredi Kartı kullanarak
+                    <p className="mt-2 text-sm leading-6 text-[#737373]">
+                        Banka veya Kredi Kartı kullanarak
                         ödemenizi güvenle yapabilirsiniz.
                     </p>
                 </div>
 
             </div>
 
-            {/* MAIN PAYMENT AREA */}
             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr]">
-
-                {/* LEFT SIDE - CARDS */}
                 <div className="border-r border-[#E8E8E8] p-8">
 
                     <div className="mb-7 flex items-start justify-between gap-6">
@@ -117,16 +124,14 @@ const PaymentStep = () => {
                         <button
                             type="button"
                             onClick={handleAddCard}
-                            className="flex shrink-0 items-center gap-2 text-sm font-bold text-[#737373] underline transition hover:text-[#E77C40]"
+                            className="flex shrink-0 items-center gap-2 text-sm font-bold text-[#737373] underline"
                         >
                             <Plus size={16} />
-
                             Başka bir Kart ile Ödeme Yap
                         </button>
 
                     </div>
 
-                    {/* ADD / EDIT CARD FORM */}
                     {showCardForm && (
                         <div className="mb-7">
                             <CardForm
@@ -146,7 +151,6 @@ const PaymentStep = () => {
                         </div>
                     )}
 
-                    {/* SAVED CARDS */}
                     {creditCards.length === 0 ? (
                         <div className="rounded border border-dashed border-[#BDBDBD] p-10 text-center">
 
@@ -167,18 +171,17 @@ const PaymentStep = () => {
                                 <div
                                     key={card.id}
                                     onClick={() =>
-                                        setSelectedCardId(
-                                            card.id
+                                        handleSelectCard(
+                                            card
                                         )
                                     }
                                     className={`cursor-pointer rounded border p-5 transition ${selectedCardId ===
-                                            card.id
-                                            ? "border-2 border-[#E77C40] bg-[#FFF7F0]"
-                                            : "border-[#E8E8E8] bg-white hover:border-[#D6D6D6]"
+                                        card.id
+                                        ? "border-2 border-[#E77C40] bg-[#FFF7F0]"
+                                        : "border-[#E8E8E8] bg-white"
                                         }`}
                                 >
 
-                                    {/* CARD TOP */}
                                     <div className="mb-5 flex items-center justify-between">
 
                                         <div className="flex items-center gap-3">
@@ -190,11 +193,11 @@ const PaymentStep = () => {
                                                     card.id
                                                 }
                                                 onChange={() =>
-                                                    setSelectedCardId(
-                                                        card.id
+                                                    handleSelectCard(
+                                                        card
                                                     )
                                                 }
-                                                className="h-4 w-4 accent-[#E77C40]"
+                                                className="accent-[#E77C40]"
                                             />
 
                                             <span className="text-sm font-bold text-[#252B42]">
@@ -203,7 +206,7 @@ const PaymentStep = () => {
 
                                         </div>
 
-                                        <div className="flex items-center gap-3">
+                                        <div className="flex gap-3">
 
                                             <button
                                                 type="button"
@@ -215,7 +218,7 @@ const PaymentStep = () => {
                                                         card
                                                     )
                                                 }
-                                                className="text-[#737373] transition hover:text-[#23A6F0]"
+                                                className="text-[#737373]"
                                             >
                                                 <Pencil
                                                     size={16}
@@ -232,7 +235,7 @@ const PaymentStep = () => {
                                                         card.id
                                                     )
                                                 }
-                                                className="text-[#737373] transition hover:text-red-500"
+                                                className="text-[#737373] hover:text-red-500"
                                             >
                                                 <Trash2
                                                     size={16}
@@ -240,13 +243,11 @@ const PaymentStep = () => {
                                             </button>
 
                                         </div>
-
                                     </div>
 
-                                    {/* CARD DESIGN */}
                                     <div className="rounded border border-[#E8E8E8] bg-white p-6">
 
-                                        <p className="mb-7 text-sm font-bold uppercase tracking-wide text-[#252B42]">
+                                        <p className="mb-7 text-sm font-bold uppercase text-[#252B42]">
                                             {
                                                 card.name_on_card
                                             }
@@ -279,8 +280,33 @@ const PaymentStep = () => {
 
                         </div>
                     )}
+                    {selectedCard && (
+                        <div className="mt-7 max-w-[220px]">
 
-                    {/* 3D SECURE */}
+                            <label className="mb-2 block text-sm font-bold text-[#252B42]">
+                                CCV
+                            </label>
+
+                            <input
+                                type="password"
+                                inputMode="numeric"
+                                maxLength={3}
+                                value={ccv}
+                                onChange={(event) =>
+                                    setCcv(
+                                        event.target.value.replace(
+                                            /\D/g,
+                                            ""
+                                        )
+                                    )
+                                }
+                                placeholder="123"
+                                className="w-full rounded border border-[#E8E8E8] px-4 py-3 outline-none focus:border-[#E77C40]"
+                            />
+
+                        </div>
+                    )}
+
                     <label className="mt-7 flex cursor-pointer items-center gap-3 text-sm font-bold text-[#252B42]">
 
                         <input
@@ -293,8 +319,6 @@ const PaymentStep = () => {
                     </label>
 
                 </div>
-
-                {/* RIGHT SIDE - INSTALLMENT */}
                 <div className="p-8">
 
                     <h3 className="text-2xl font-bold text-[#252B42]">
@@ -308,16 +332,15 @@ const PaymentStep = () => {
                     {!selectedCard ? (
                         <div className="mt-7 rounded border border-dashed border-[#BDBDBD] p-10 text-center">
 
-                            <p className="text-sm leading-6 text-[#737373]">
-                                Taksit seçeneklerini görmek için kayıtlı kartlardan
-                                birini seçiniz.
+                            <p className="text-sm text-[#737373]">
+                                Taksit seçeneklerini görmek için
+                                bir kart seçiniz.
                             </p>
 
                         </div>
                     ) : (
                         <div className="mt-7 overflow-hidden rounded border border-[#E8E8E8]">
 
-                            {/* TABLE HEADER */}
                             <div className="grid grid-cols-2 bg-[#FAFAFA] px-5 py-4 text-sm font-bold text-[#252B42]">
 
                                 <span>
@@ -330,15 +353,14 @@ const PaymentStep = () => {
 
                             </div>
 
-                            {/* SINGLE PAYMENT */}
-                            <label className="grid cursor-pointer grid-cols-2 items-center border-t border-[#E8E8E8] px-5 py-5">
+                            <label className="grid cursor-pointer grid-cols-2 border-t border-[#E8E8E8] px-5 py-5">
 
                                 <span className="flex items-center gap-3 font-bold text-[#E77C40]">
 
                                     <input
                                         type="radio"
                                         defaultChecked
-                                        className="h-4 w-4 accent-[#E77C40]"
+                                        className="accent-[#E77C40]"
                                     />
 
                                     Tek Çekim
