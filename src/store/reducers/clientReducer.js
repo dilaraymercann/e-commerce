@@ -12,6 +12,7 @@ const SET_ROLES = "SET_ROLES";
 const SET_THEME = "SET_THEME";
 const SET_LANGUAGE = "SET_LANGUAGE";
 const SET_ADDRESS_LIST = "SET_ADDRESS_LIST";
+const SET_CREDIT_CARDS = "SET_CREDIT_CARDS";
 
 export const clientActionTypes = {
     SET_USER,
@@ -19,6 +20,7 @@ export const clientActionTypes = {
     SET_THEME,
     SET_LANGUAGE,
     SET_ADDRESS_LIST,
+    SET_CREDIT_CARDS,
 };
 
 const clientReducer = (state = initialState, action) => {
@@ -51,6 +53,12 @@ const clientReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addressList: action.payload,
+            };
+
+        case SET_CREDIT_CARDS:
+            return {
+                ...state,
+                creditCards: action.payload,
             };
 
         default:

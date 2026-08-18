@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Plus, Trash2, Pencil } from "lucide-react";
+import PaymentStep from "./PaymentStep";
 
 import {
     fetchAddresses,
@@ -28,6 +29,9 @@ const CreateOrder = () => {
 
     const [selectedAddressId, setSelectedAddressId] =
         useState(null);
+
+    const [activeStep, setActiveStep] =
+        useState(1);
 
     useEffect(() => {
         dispatch(fetchAddresses());
@@ -75,10 +79,19 @@ const CreateOrder = () => {
             <div className="mx-auto max-w-[1200px] px-4">
 
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
+
                     <div>
+
                         <div className="mb-6 grid grid-cols-2 overflow-hidden rounded border border-[#E8E8E8] bg-white">
 
-                            <div className="border-b-4 border-[#E77C40] p-5">
+                            <button
+                                type="button"
+                                onClick={() => setActiveStep(1)}
+                                className={`p-5 text-left ${activeStep === 1
+                                    ? "border-b-4 border-[#E77C40]"
+                                    : ""
+                                    }`}
+                            >
                                 <div className="flex items-center gap-3">
 
                                     <span className="text-3xl font-bold text-[#F3CD03]">
@@ -86,7 +99,12 @@ const CreateOrder = () => {
                                     </span>
 
                                     <div>
-                                        <h2 className="text-lg font-bold text-[#E77C40]">
+                                        <h2
+                                            className={`text-lg font-bold ${activeStep === 1
+                                                ? "text-[#E77C40]"
+                                                : "text-[#737373]"
+                                                }`}
+                                        >
                                             Adres Bilgileri
                                         </h2>
 
@@ -96,9 +114,16 @@ const CreateOrder = () => {
                                     </div>
 
                                 </div>
-                            </div>
-
-                            <div className="p-5">
+                            </button>
+                            <button
+                                type="button"
+                                disabled={!selectedAddressId}
+                                onClick={() => setActiveStep(2)}
+                                className={`p-5 text-left disabled:cursor-not-allowed disabled:opacity-50 ${activeStep === 2
+                                    ? "border-b-4 border-[#E77C40]"
+                                    : ""
+                                    }`}
+                            >
                                 <div className="flex items-center gap-3">
 
                                     <span className="text-3xl font-bold text-[#F3CD03]">
@@ -106,172 +131,178 @@ const CreateOrder = () => {
                                     </span>
 
                                     <div>
-                                        <h2 className="text-lg font-bold text-[#737373]">
+                                        <h2
+                                            className={`text-lg font-bold ${activeStep === 2
+                                                ? "text-[#E77C40]"
+                                                : "text-[#737373]"
+                                                }`}
+                                        >
                                             Ödeme Seçenekleri
                                         </h2>
 
                                         <p className="text-xs text-[#737373]">
-                                            Kart bilgilerinizi sonraki adımda gireceksiniz.
+                                            Kart bilgilerinizi girin.
                                         </p>
                                     </div>
 
                                 </div>
-                            </div>
+                            </button>
 
                         </div>
-                        <div className="rounded border border-[#E8E8E8] bg-white p-6">
+                        {activeStep === 1 && (
+                            <div className="rounded border border-[#E8E8E8] bg-white p-6">
 
-                            <div className="mb-6 flex items-center justify-between">
+                                <div className="mb-6 flex items-center justify-between">
 
-                                <h2 className="text-xl font-bold text-[#252B42]">
-                                    Teslimat Adresi
-                                </h2>
+                                    <h2 className="text-xl font-bold text-[#252B42]">
+                                        Teslimat Adresi
+                                    </h2>
 
-                                <button
-                                    onClick={() => {
-                                        setEditingAddress(null);
-                                        setShowAddressForm(
-                                            !showAddressForm
-                                        );
-                                    }}
-                                    className="flex items-center gap-2 text-sm font-bold text-[#E77C40]"
-                                >
-                                    <Plus size={18} />
-                                    Yeni Adres Ekle
-                                </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setEditingAddress(null);
+                                            setShowAddressForm(
+                                                !showAddressForm
+                                            );
+                                        }}
+                                        className="flex items-center gap-2 text-sm font-bold text-[#E77C40]"
+                                    >
+                                        <Plus size={18} />
+                                        Yeni Adres Ekle
+                                    </button>
 
-                            </div>
+                                </div>
 
-                            {showAddressForm && (
-                                <AddressForm
-                                    editingAddress={
-                                        editingAddress
-                                    }
-                                    onClose={() => {
-                                        setShowAddressForm(
-                                            false
-                                        );
-                                        setEditingAddress(null);
-                                    }}
-                                />
-                            )}
+                                {showAddressForm && (
+                                    <AddressForm
+                                        editingAddress={
+                                            editingAddress
+                                        }
+                                        onClose={() => {
+                                            setShowAddressForm(
+                                                false
+                                            );
 
-                            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-
-                                {addressList.map(
-                                    (address) => (
-                                        <div
-                                            key={address.id}
-                                            onClick={() =>
-                                                setSelectedAddressId(
-                                                    address.id
-                                                )
-                                            }
-                                            className={`cursor-pointer rounded border p-5 transition ${selectedAddressId ===
-                                                address.id
-                                                ? "border-2 border-[#E77C40] bg-[#FFF7F0]"
-                                                : "border-[#E8E8E8] bg-white"
-                                                }`}
-                                        >
-
-                                            <div className="mb-4 flex items-center justify-between">
-
-                                                <div className="flex items-center gap-2">
-
-                                                    <input
-                                                        type="radio"
-                                                        checked={
-                                                            selectedAddressId ===
-                                                            address.id
-                                                        }
-                                                        onChange={() =>
-                                                            setSelectedAddressId(
-                                                                address.id
-                                                            )
-                                                        }
-                                                    />
-
-                                                    <span className="font-bold text-[#252B42]">
-                                                        {
-                                                            address.title
-                                                        }
-                                                    </span>
-
-                                                </div>
-
-                                                <div className="flex gap-3">
-
-                                                    <button
-                                                        onClick={(
-                                                            event
-                                                        ) => {
-                                                            event.stopPropagation();
-
-                                                            handleEdit(
-                                                                address
-                                                            );
-                                                        }}
-                                                        className="text-[#737373] hover:text-[#23A6F0]"
-                                                    >
-                                                        <Pencil
-                                                            size={
-                                                                16
-                                                            }
-                                                        />
-                                                    </button>
-
-                                                    <button
-                                                        onClick={(
-                                                            event
-                                                        ) => {
-                                                            event.stopPropagation();
-
-                                                            handleDelete(
-                                                                address.id
-                                                            );
-                                                        }}
-                                                        className="text-[#737373] hover:text-red-500"
-                                                    >
-                                                        <Trash2
-                                                            size={
-                                                                16
-                                                            }
-                                                        />
-                                                    </button>
-
-                                                </div>
-                                            </div>
-
-                                            <h3 className="mb-2 font-bold text-[#252B42]">
-                                                {address.name}{" "}
-                                                {address.surname}
-                                            </h3>
-
-                                            <p className="mb-2 text-sm text-[#737373]">
-                                                {address.phone}
-                                            </p>
-
-                                            <p className="text-sm leading-6 text-[#737373]">
-                                                {
-                                                    address.neighborhood
-                                                }
-                                                ,{" "}
-                                                {
-                                                    address.district
-                                                }
-                                                , {address.city}
-                                            </p>
-
-                                        </div>
-                                    )
+                                            setEditingAddress(
+                                                null
+                                            );
+                                        }}
+                                    />
                                 )}
 
+                                <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+
+                                    {addressList.map(
+                                        (address) => (
+                                            <div
+                                                key={address.id}
+                                                onClick={() =>
+                                                    setSelectedAddressId(
+                                                        address.id
+                                                    )
+                                                }
+                                                className={`cursor-pointer rounded border p-5 transition ${selectedAddressId ===
+                                                    address.id
+                                                    ? "border-2 border-[#E77C40] bg-[#FFF7F0]"
+                                                    : "border-[#E8E8E8] bg-white"
+                                                    }`}
+                                            >
+
+                                                <div className="mb-4 flex items-center justify-between">
+
+                                                    <div className="flex items-center gap-2">
+
+                                                        <input
+                                                            type="radio"
+                                                            checked={
+                                                                selectedAddressId ===
+                                                                address.id
+                                                            }
+                                                            onChange={() =>
+                                                                setSelectedAddressId(
+                                                                    address.id
+                                                                )
+                                                            }
+                                                            className="accent-[#E77C40]"
+                                                        />
+
+                                                        <span className="font-bold text-[#252B42]">
+                                                            {address.title}
+                                                        </span>
+
+                                                    </div>
+
+                                                    <div className="flex gap-3">
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={(
+                                                                event
+                                                            ) => {
+                                                                event.stopPropagation();
+
+                                                                handleEdit(
+                                                                    address
+                                                                );
+                                                            }}
+                                                            className="text-[#737373] hover:text-[#23A6F0]"
+                                                        >
+                                                            <Pencil
+                                                                size={16}
+                                                            />
+                                                        </button>
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={(
+                                                                event
+                                                            ) => {
+                                                                event.stopPropagation();
+
+                                                                handleDelete(
+                                                                    address.id
+                                                                );
+                                                            }}
+                                                            className="text-[#737373] hover:text-red-500"
+                                                        >
+                                                            <Trash2
+                                                                size={16}
+                                                            />
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+
+                                                <h3 className="mb-2 font-bold text-[#252B42]">
+                                                    {address.name}{" "}
+                                                    {address.surname}
+                                                </h3>
+
+                                                <p className="mb-2 text-sm text-[#737373]">
+                                                    {address.phone}
+                                                </p>
+
+                                                <p className="text-sm leading-6 text-[#737373]">
+                                                    {address.neighborhood},{" "}
+                                                    {address.district},{" "}
+                                                    {address.city}
+                                                </p>
+
+                                            </div>
+                                        )
+                                    )}
+
+                                </div>
+
                             </div>
+                        )}
 
-                        </div>
+                        {activeStep === 2 && (
+                            <PaymentStep />
+                        )}
+
                     </div>
-
-                    {/* RIGHT SUMMARY */}
                     <div className="h-fit lg:sticky lg:top-6">
 
                         <div className="rounded border border-[#E8E8E8] bg-white p-5 shadow-sm">
@@ -321,10 +352,11 @@ const CreateOrder = () => {
 
                             </div>
 
-                            <div className="my-5 border-t" />
+                            <div className="my-5 border-t border-[#E8E8E8]" />
 
                             <div className="flex justify-between">
-                                <span className="font-bold">
+
+                                <span className="font-bold text-[#252B42]">
                                     Toplam
                                 </span>
 
@@ -332,21 +364,35 @@ const CreateOrder = () => {
                                     $
                                     {grandTotal.toFixed(2)}
                                 </span>
+
                             </div>
 
                         </div>
-
-                        <button
-                            type="button"
-                            disabled={!selectedAddressId}
-                            className="mt-4 w-full rounded bg-[#E77C40] py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
-                        >
-                            Kaydet ve Devam Et
-                        </button>
+                        {activeStep === 1 && (
+                            <button
+                                type="button"
+                                disabled={!selectedAddressId}
+                                onClick={() =>
+                                    setActiveStep(2)
+                                }
+                                className="mt-4 w-full rounded bg-[#E77C40] py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                Kaydet ve Devam Et
+                            </button>
+                        )}
+                        {activeStep === 2 && (
+                            <button
+                                type="button"
+                                className="mt-4 w-full rounded bg-[#E77C40] py-3 text-sm font-bold text-white"
+                            >
+                                Ödeme Yap
+                            </button>
+                        )}
 
                     </div>
 
                 </div>
+
             </div>
         </section>
     );

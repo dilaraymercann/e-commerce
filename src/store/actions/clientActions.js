@@ -186,3 +186,86 @@ export const deleteAddress = (addressId) => {
         }
     };
 };
+
+export const setCreditCards = (creditCards) => ({
+    type: clientActionTypes.SET_CREDIT_CARDS,
+    payload: creditCards,
+});
+
+export const fetchCreditCards = () => {
+    return async (dispatch) => {
+        try {
+            const response = await api.get("/user/card");
+
+            dispatch(setCreditCards(response.data));
+        } catch (error) {
+            console.error(
+                "Credit cards could not be fetched:",
+                error
+            );
+        }
+    };
+};
+
+export const addCreditCard = (cardData) => {
+    return async (dispatch) => {
+        try {
+            await api.post("/user/card", cardData);
+
+            dispatch(fetchCreditCards());
+
+            return {
+                success: true,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Card could not be added.",
+            };
+        }
+    };
+};
+
+export const updateCreditCard = (cardData) => {
+    return async (dispatch) => {
+        try {
+            await api.put("/user/card", cardData);
+
+            dispatch(fetchCreditCards());
+
+            return {
+                success: true,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Card could not be updated.",
+            };
+        }
+    };
+};
+
+export const deleteCreditCard = (cardId) => {
+    return async (dispatch) => {
+        try {
+            await api.delete(`/user/card/${cardId}`);
+
+            dispatch(fetchCreditCards());
+
+            return {
+                success: true,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Card could not be deleted.",
+            };
+        }
+    };
+};
