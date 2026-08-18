@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage'
 import AboutPage from './pages/AboutPage'
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -42,6 +43,10 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/cart"
+            element={<ShoppingCartPage />}
+          />
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-right" />

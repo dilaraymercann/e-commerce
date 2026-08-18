@@ -11,6 +11,7 @@ import {
 
 import { fetchProduct } from "../../store/actions/productActions";
 import Breadcrumb from "../../components/main/Breadcrumb";
+import { addToCart } from "../../store/actions/shoppingCartActions";
 
 const ProductDetail = () => {
     const dispatch = useDispatch();
@@ -245,7 +246,10 @@ const ProductDetail = () => {
                             <Heart className="size-5 text-[#252B42]" />
                         </button>
 
-                        <button className="flex size-10 items-center justify-center rounded-full border border-[#E8E8E8] bg-white">
+                        <button
+                            onClick={() => dispatch(addToCart(product))}
+                            className="flex size-10 items-center justify-center rounded-full border border-[#E8E8E8] bg-white"
+                        >
                             <ShoppingCart className="size-5 text-[#252B42]" />
                         </button>
 

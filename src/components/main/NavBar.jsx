@@ -37,6 +37,14 @@ const NavBar = () => {
         (category) => getCategoryGender(category) === "erkek"
     );
 
+    const cart = useSelector(
+        (state) => state.shoppingCart.cart
+    );
+    const cartItemCount = cart.reduce(
+        (total, item) => total + item.count,
+        0
+    );
+
     return (
         <Navbar className="bg-white px-4 py-0">
             <div className="flex w-full items-center px-4 py-4">
@@ -176,10 +184,79 @@ const NavBar = () => {
                         <Search className="size-5" />
                     </button>
 
-                    <button className="flex items-center gap-1 border-0 bg-transparent p-0 text-[#23A6F0]">
-                        <ShoppingCart className="size-5" />
-                        <span className="text-xs">1</span>
-                    </button>
+                    <UncontrolledDropdown>
+                        <DropdownToggle
+                            tag="button"
+                            className="flex items-center gap-1 border-0 bg-transparent p-0 !text-[#23A6F0]"
+                        >
+                            <ShoppingCart className="size-5" />
+
+                            <span className="text-xs">
+                                {cartItemCount}
+                            </span>
+                        </DropdownToggle>
+
+                        <DropdownMenu
+                            end
+                            className="!min-w-[360px] !border-0 !p-0 shadow-lg"
+                        >
+                            <div className="p-4">
+                                <h6 className="font-montserrat text-base font-bold text-[#252B42]">
+                                    Sepetim ({cartItemCount} Ürün)
+                                </h6>
+                            </div>
+
+                            <div className="max-h-[400px] overflow-y-auto">
+                                {cart.length === 0 ? (
+                                    <p className="p-4 text-sm text-[#737373]">
+                                        Sepetiniz boş.
+                                    </p>
+                                ) : (
+                                    cart.map((item) => (
+                                        <div
+                                            key={item.product.id}
+                                            className="flex gap-4 border-t border-[#E8E8E8] p-4"
+                                        >
+                                            <img
+                                                src={item.product.images?.[0]?.url}
+                                                alt={item.product.name}
+                                                className="h-20 w-20 rounded object-cover"
+                                            />
+
+                                            <div className="flex flex-1 flex-col">
+                                                <h6 className="line-clamp-1 font-montserrat text-sm font-bold text-[#252B42]">
+                                                    {item.product.name}
+                                                </h6>
+
+                                                <p className="mt-1 text-xs text-[#737373]">
+                                                    Adet: {item.count}
+                                                </p>
+
+                                                <p className="mt-auto text-sm font-bold text-[#E77C40]">
+                                                    ${item.product.price}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+
+                            {cart.length > 0 && (
+                                <div className="flex gap-3 border-t border-[#E8E8E8] p-4">
+                                    <Link
+                                        to="/cart"
+                                        className="flex-1 rounded border border-[#BDBDBD] bg-white py-3 text-center text-sm font-bold !text-[#252B42] !no-underline"
+                                    >
+                                        Sepete Git
+                                    </Link>
+
+                                    <button className="flex-1 rounded bg-[#E77C40] py-3 text-sm font-bold text-white">
+                                        Siparişi Tamamla
+                                    </button>
+                                </div>
+                            )}
+                        </DropdownMenu>
+                    </UncontrolledDropdown>
 
                     <button className="flex items-center gap-1 border-0 bg-transparent p-0 text-[#23A6F0]">
                         <Heart className="size-5" />
