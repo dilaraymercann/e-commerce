@@ -7,6 +7,7 @@ import {
     removeCartItem,
     toggleCartItem,
 } from "../../store/actions/shoppingCartActions";
+import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
     const dispatch = useDispatch();
@@ -226,12 +227,12 @@ const ShoppingCart = () => {
                                     İNDİRİM KODU GİR
                                 </span>
                             </button>
-                            <button
-                                type="button"
-                                className="mt-4 w-full rounded bg-[#E77C40] px-4 py-3 text-sm font-bold text-white transition hover:bg-[#d86d32]"
+                            <Link
+                                to="/create-order"
+                                className="mt-4 block w-full rounded bg-[#E77C40] px-4 py-3 text-center text-sm font-bold !text-white !no-underline transition hover:bg-[#d86d32]"
                             >
                                 Sepeti Onayla
-                            </button>
+                            </Link>
 
                         </div>
 

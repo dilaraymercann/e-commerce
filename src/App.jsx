@@ -9,6 +9,8 @@ import AboutPage from './pages/AboutPage'
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
+import CreateOrderPage from "./pages/CreateOrderPage";
+import ProtectedRoute from "./components/main/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -46,6 +48,14 @@ function App() {
           <Route
             path="/cart"
             element={<ShoppingCartPage />}
+          />
+          <Route
+            path="/create-order"
+            element={
+              <ProtectedRoute>
+                <CreateOrderPage />
+              </ProtectedRoute>
+            }
           />
         </Routes>
       </BrowserRouter>

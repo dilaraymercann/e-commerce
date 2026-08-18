@@ -106,3 +106,83 @@ export const verifyToken = () => {
         }
     };
 };
+
+export const setAddressList = (addressList) => ({
+    type: clientActionTypes.SET_ADDRESS_LIST,
+    payload: addressList,
+});
+
+export const fetchAddresses = () => {
+    return async (dispatch) => {
+        try {
+            const response = await api.get("/user/address");
+
+            dispatch(setAddressList(response.data));
+        } catch (error) {
+            console.error("Addresses could not be fetched:", error);
+        }
+    };
+};
+
+export const addAddress = (addressData) => {
+    return async (dispatch) => {
+        try {
+            await api.post("/user/address", addressData);
+
+            dispatch(fetchAddresses());
+
+            return {
+                success: true,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Address could not be added.",
+            };
+        }
+    };
+};
+
+export const updateAddress = (addressData) => {
+    return async (dispatch) => {
+        try {
+            await api.put("/user/address", addressData);
+
+            dispatch(fetchAddresses());
+
+            return {
+                success: true,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Address could not be updated.",
+            };
+        }
+    };
+};
+
+export const deleteAddress = (addressId) => {
+    return async (dispatch) => {
+        try {
+            await api.delete(`/user/address/${addressId}`);
+
+            dispatch(fetchAddresses());
+
+            return {
+                success: true,
+            };
+        } catch (error) {
+            return {
+                success: false,
+                message:
+                    error.response?.data?.message ||
+                    "Address could not be deleted.",
+            };
+        }
+    };
+};
